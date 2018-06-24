@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.commonadapter.common.view.MViewGroup2 xmlns:android="http://schemas.android.com/apk/res/android"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/a" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/b" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/c" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:src="@mipmap/d" />
+
+
+</com.commonadapter.common.view.MViewGroup2>

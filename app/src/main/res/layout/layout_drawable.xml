@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_shape"
+        android:text="设置文字" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_shape_oval" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:background="@drawable/drawable_shape_line"></View>
+
+    <View
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/drawable_shape_ring"></View>
+
+    <Button
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawable_selector"
+        android:text="默认按钮"
+        android:textColor="@color/darkblue" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_layer_list"
+        android:text="默认按钮"
+        android:textColor="@color/darkblue" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_layer_list2"
+        android:text="默认按钮" />
+
+
+    <com.commonadapter.common.view.MyRadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center_horizontal"
+            android:text="女是"
+            android:textSize="10dip" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+
+               <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableTop="@drawable/item_select_b"
+            android:gravity="center"
+            android:text="女是"
+            android:textSize="10dip" />
+
+    </com.commonadapter.common.view.MyRadioGroup>
+
+    <TextView
+        android:id="@+id/tvSex"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="您的性别是：男"
+        android:textSize="9pt" />
+
+</LinearLayout>

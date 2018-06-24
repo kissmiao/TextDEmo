@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.commonadapter.common.view.MViewGroup2
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/bt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="MyVeiw"
+        />
+
+    <Button
+        android:id="@+id/bt_solid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="光晕"/>
+
+    <Button
+        android:id="@+id/qq_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="QQ"/>
+
+    <Button
+        android:id="@+id/bt_viewgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="myViewGroup"/>
+</com.commonadapter.common.view.MViewGroup2>

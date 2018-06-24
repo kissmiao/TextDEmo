@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@mipmap/background_image">
+
+    <RelativeLayout
+        android:id="@+id/rl_rect_context"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:text="huang"/>
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_for_days_ac_main"
+            android:layout_width="fill_parent"
+            android:layout_below="@id/tv_text"
+            android:layout_height="match_parent"
+            />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <include
+            android:id="@+id/keyboard_view"
+            layout="@layout/keyboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"></include>
+
+    </RelativeLayout>
+
+
+</FrameLayout>

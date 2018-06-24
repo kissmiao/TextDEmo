@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.commonadapter.common.view.MViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                                          android:layout_width="match_parent"
+                                          android:layout_height="match_parent"
+                                          android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="One"/>
+
+    <Button
+        android:id="@+id/btn_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="two"/>
+
+    <Button
+        android:id="@+id/btn_loadeLoade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点赞"/>
+
+    <Button
+        android:id="@+id/view_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="viewPage"/>
+
+    <Button
+        android:id="@+id/home_viewpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="横向滑动"/>
+
+    <Button
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clock"/>
+
+    <Button
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="menu"/>
+
+    <Button
+        android:id="@+id/moveview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="moveview"/>
+
+    <Button
+        android:id="@+id/loaderimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除Veiw"/>
+
+
+    <Button
+        android:id="@+id/touch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="touch"/>
+
+    <Button
+        android:id="@+id/remove_sideslip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="removeSideslipActivity"/>
+
+
+    <Button
+        android:id="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="scroll"/>
+
+
+    <Button
+        android:id="@+id/broken_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="折线"/>
+
+    <Button
+        android:id="@+id/column"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="柱状图"/>
+
+    <Button
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="时间选择器"/>
+
+    <Button
+        android:id="@+id/bt_LayoutInflate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LayoutInflate"/>
+
+
+    <Button
+        android:id="@+id/bt_recycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recycle"/>
+
+    <Button
+        android:id="@+id/event_bus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="eventBus"
+        />
+
+    <Button
+        android:id="@+id/bt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="时间"
+        />
+</com.commonadapter.common.view.MViewGroup>

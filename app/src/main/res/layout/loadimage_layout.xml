@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dianzan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <LinearLayout
+        android:id="@+id/ll_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!--    <com.commonadapter.common.view.DragView
+           android:id="@+id/iv_loadeimage"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           />-->
+        <!-- <com.commonadapter.common.view.PathPainter
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             ></com.commonadapter.common.view.PathPainter>-->
+<!--        <com.commonadapter.common.view.PathTan
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ></com.commonadapter.common.view.PathTan>-->
+        <TextView
+            android:id="@+id/tv_loadimage_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点赞的左边" />
+
+        <ImageView
+            android:id="@+id/iv_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="200dp"
+            android:background="@mipmap/click_a_like_on" />
+    </LinearLayout>
+
+<!--    <com.commonadapter.common.view.FllowerAnimation
+        android:id="@+id/view_xin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      ></com.commonadapter.common.view.FllowerAnimation>-->
+
+
+</RelativeLayout>

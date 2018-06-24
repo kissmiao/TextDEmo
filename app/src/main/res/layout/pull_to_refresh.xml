@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/pull_to_refresh_head"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/gray_title"></View>
+
+    <RelativeLayout
+        android:id="@+id/ll_pull_to_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        >
+
+        <TextView
+            android:id="@+id/tv_pull_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="新增一条开销"
+            android:textSize="@dimen/text_18"/>
+
+        <TextView
+            android:id="@+id/tv_pull_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:text="0.00"
+            android:textSize="@dimen/text_18"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_item_pull_view_page"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_item_pull_label"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+        </android.support.v4.view.ViewPager>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_item_pull_point_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="5dip"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"></LinearLayout>
+    </LinearLayout>
+
+
+
+    <View
+        android:id="@+id/view_login"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="@color/gray_title"></View>
+</LinearLayout>

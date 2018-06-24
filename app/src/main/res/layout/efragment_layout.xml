@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.commonadapter.common.view.MViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                                          android:layout_width="match_parent"
+                                          android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/bt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MyVeiw"></Button>
+
+    <Button
+        android:id="@+id/bt_solid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="光晕"/>
+
+    <Button
+        android:id="@+id/qq_health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QQ"/>
+
+    <Button
+        android:id="@+id/bt_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item"/>
+
+    <Button
+        android:id="@+id/bt_curve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="curve"/>
+
+    <Button
+        android:id="@+id/bt_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="drawable"/>
+
+    <Button
+        android:id="@+id/bt_image_viewgroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ImageViewGroup"/>
+
+    <Button
+        android:id="@+id/bt_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Circular"/>
+
+    <Button
+        android:id="@+id/bt_circular2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Circular2"/>
+
+    <Button
+        android:id="@+id/bt_listView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="listView"/>
+
+    <Button
+        android:id="@+id/bt_recycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RecycleView"/>
+
+    <Button
+        android:id="@+id/bt_viewpage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewPage"
+        />
+
+    <Button
+        android:id="@+id/bt_popw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="popwindow"
+        />
+
+    <Button
+        android:id="@+id/bt_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试Handler"
+        />
+
+    <Button
+        android:id="@+id/bt_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialog"
+        />
+    <Button
+        android:id="@+id/bt_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        />
+</com.commonadapter.common.view.MViewGroup>

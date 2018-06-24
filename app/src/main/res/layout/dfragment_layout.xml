@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <com.commonadapter.common.view.ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_moveview"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </com.commonadapter.common.view.ScrollView>
+
+
+    <com.commonadapter.common.view.RunningLightView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/palegreen"
+        android:ellipsize="none"
+        android:singleLine="true"
+        android:text="11111111112222222222223333333333344444444455555555555566666666677777777777777777777788888888888888899999999999999999"></com.commonadapter.common.view.RunningLightView>
+
+
+</LinearLayout>
