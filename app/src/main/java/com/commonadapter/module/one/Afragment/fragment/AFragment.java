@@ -3,6 +3,7 @@ package com.commonadapter.module.one.Afragment.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityManagerCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,7 +46,6 @@ public class AFragment extends Fragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.activity_main, null);
         initView(view);
      //   EventBus.getDefault().register(this);
-
         return view;
     }
 

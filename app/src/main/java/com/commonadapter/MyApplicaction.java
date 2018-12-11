@@ -29,7 +29,7 @@ public class MyApplicaction extends Application {
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
                 //配置https
                 .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
-                //其他配置
+                //其他配置Ok
                 .build();
 
 

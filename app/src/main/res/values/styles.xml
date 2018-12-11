@@ -56,7 +56,7 @@
         <!-- 设置dialog的背景-->
         <!--<item name="android:windowBackground">@android:color/transparent</item>-->
         <!--<item name="android:windowIsTranslucent">false</item>&lt;!&ndash;半透明&ndash;&gt;-->
-       <!-- 设置全屏-->
+        <!-- 设置全屏-->
         <!--<item name="android:windowFullscreen">true</item>-->
         <!--<item name="android:windowContentOverlay">@null</item>-->
         <!-- 是否有边框 -->
@@ -90,5 +90,17 @@
         <!-- 点外边可以消失  -->
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
+
+
+    <style name="dialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否悬浮在activity上 -->
+        <item name="android:windowIsTranslucent">true</item><!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:colorBackgroundCacheHint">@null</item><!-- 背景缓存颜色 -->
+    </style>
+
 
 </resources>

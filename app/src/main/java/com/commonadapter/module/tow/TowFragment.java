@@ -7,15 +7,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.commonadapter.R;
 import com.commonadapter.common.bean.Bean;
+import com.commonadapter.common.view.SildeView;
 import com.commonadapter.module.one.Afragment.activity.OneActivity;
+import com.commonadapter.module.one.Afragment.activity.RemoveSideslipActivity;
 
 /**
  * Created by Administrator on 2016/7/20.
  */
-public class TowFragment extends Fragment {
+public class TowFragment extends Fragment implements View.OnClickListener {
+
+    private View view;
+    /**
+     * 传值到HomeActivity
+     */
+    private Button mBtIntent;
+    /**
+     * 刻度滑动
+     */
+    private Button mBtSlide;
 
     @Nullable
     @Override
@@ -27,25 +40,31 @@ public class TowFragment extends Fragment {
     }
 
     private void initView(View view) {
-//        Bundle bundle = getArguments();
-//         int id = bundle.getInt("id");
-//        Log.i("LOG", "Id" + id);
 
-        view.findViewById(R.id.bt_intent).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in=new Intent(getActivity(), OneActivity.class);
+        mBtIntent = (Button) view.findViewById(R.id.bt_intent);
+        mBtIntent.setOnClickListener(this);
+        mBtSlide = (Button) view.findViewById(R.id.bt_slide);
+        mBtSlide.setOnClickListener(this);
+    }
 
-                Bean bean=new Bean();
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bt_intent:
+                Intent in = new Intent(getActivity(), OneActivity.class);
+
+                Bean bean = new Bean();
                 bean.setTitle("jack");
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putParcelable("bean", bean);
                 in.putExtras(bundle);
                 startActivity(in);
+                break;
+            case R.id.bt_slide:
+                Intent intent = new Intent(getActivity(), SlideActivity.class);
+                startActivity(intent);
 
-            }
-        });
-
+                break;
+        }
     }
-
 }

@@ -11,4 +11,11 @@
         android:text="传值到HomeActivity"
         />
 
+
+    <Button
+        android:id="@+id/bt_slide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="刻度滑动"
+        />
 </com.commonadapter.common.view.MViewGroup>
