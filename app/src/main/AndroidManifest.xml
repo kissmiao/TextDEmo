@@ -63,6 +63,8 @@
         <activity android:name="com.commonadapter.module.three.MessageActivity"></activity>
         <activity android:name="com.commonadapter.module.tow.SlideActivity"></activity>
 
+
+        <activity android:name="com.commonadapter.module.tow.SpeedActivity"></activity>
         <meta-data
             android:name="APPID"
             android:value="${APPID}" />
