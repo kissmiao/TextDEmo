@@ -3,6 +3,7 @@ package com.commonadapter.common.util;
 import android.app.Activity;
 import android.content.Context;
 import android.os.CountDownTimer;
+import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -80,6 +81,13 @@ public class UIHelper {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+
+    public static int dp2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+
 
     /**
      * 根据手机的分辨率从px(像素)转换成dp
@@ -186,6 +194,19 @@ public class UIHelper {
         return dm;
     }
 
+    //第一个参数是要计算的字符串，第二个参数是字提大小
+    public static float getTextWidth(String text, float size) {
+        TextPaint FontPaint = new TextPaint();
+        FontPaint.setTextSize(size);
+        return FontPaint.measureText(text);
+    }
+
+
+    public static float getTextHeight(String text, float size) {
+        TextPaint FontPaint = new TextPaint();
+        FontPaint.setTextSize(size);
+        return FontPaint.ascent() + FontPaint.descent();
+    }
 
 
 }

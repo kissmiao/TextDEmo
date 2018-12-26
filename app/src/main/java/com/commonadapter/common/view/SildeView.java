@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -35,11 +36,12 @@ public class SildeView extends View {
     private int mBitHeight;
 
     private int position;
-    private int top = 10;
+    private int top = 30;
 
 
     private Paint linePaint;
-    private Paint linePaint2;
+
+    private Paint textPaint;
 
     private Path path1;
     private Path path2;
@@ -62,7 +64,11 @@ public class SildeView extends View {
 
     private int rightoveindex;
 
-    private int liftMoveindex=20;
+    private int liftMoveindex = 20;
+
+
+    int money = 8888;
+
 
     public SildeView(Context context) {
         super(context);
@@ -123,11 +129,11 @@ public class SildeView extends View {
         linePaint.setAntiAlias(true);
 
 
-        linePaint2 = new Paint();
-        linePaint2.setColor(Color.RED);  //设置画笔颜色
-        linePaint2.setStrokeWidth(15);
-        linePaint2.setStyle(Paint.Style.FILL);
-        linePaint2.setAntiAlias(true);
+        textPaint = new Paint();
+        textPaint.setColor(Color.RED);  //设置画笔颜色
+        textPaint.setTextSize(UIHelper.sp2px(mContext, 12));
+        textPaint.setStyle(Paint.Style.FILL);
+        textPaint.setAntiAlias(true);
 
     }
 
@@ -135,12 +141,16 @@ public class SildeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        int sizeWidth = (int) getTextWidth(money + "", UIHelper.sp2px(mContext, 12));
+
+
+        canvas.drawText(money + "", lift - (sizeWidth / 2), 50 - liftMoveindex, textPaint);
+
         canvas.drawBitmap(bitmap, position, UIHelper.dip2px(mContext, top), bitmapPaint);
 
+        canvas.drawLine(lift, 90 - liftMoveindex, lift, 120 - liftMoveindex, linePaint);
 
-        canvas.drawLine(lift, 20 -liftMoveindex, lift, 50 - liftMoveindex, linePaint);
-
-        canvas.drawLine(right, 20 - rightoveindex, right, 50 - rightoveindex, linePaint);
+        canvas.drawLine(right, 90 - rightoveindex, right, 120 - rightoveindex, linePaint);
 
 
     }
@@ -200,4 +210,18 @@ public class SildeView extends View {
         return true;
     }
 
+
+    //第一个参数是要计算的字符串，第二个参数是字提大小
+    public static float getTextWidth(String text, float size) {
+        TextPaint FontPaint = new TextPaint();
+        FontPaint.setTextSize(size);
+        return FontPaint.measureText(text);
+    }
+
+
+    public static float getTextHeight(String text, float size) {
+        TextPaint FontPaint = new TextPaint();
+        FontPaint.setTextSize(size);
+        return FontPaint.ascent() + FontPaint.descent();
+    }
 }
