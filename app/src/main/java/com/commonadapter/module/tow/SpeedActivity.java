@@ -25,7 +25,7 @@ public class SpeedActivity extends Activity {
                 //  Toast.makeText(SpeedActivity.this, "money" + money, Toast.LENGTH_SHORT).show();
             }
         });
-        view.setMoney(1000, 2000);
+        view.setMoney(0, 2000);
     }
 
 

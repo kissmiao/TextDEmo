@@ -278,37 +278,38 @@ public class ProgressBarView extends View {
 
         progressPaint.setStrokeWidth(STROKE_WIDTH);
         progressPaint.setStyle(Paint.Style.STROKE);//设置空心
-        progressPaint.setColor(Color.parseColor("#C6EFE8"));
+        progressPaint.setColor(Color.parseColor("#31BAA4"));
         canvas.drawArc(circleRectF, start, sweep1, false, progressPaint);
 
 
         //红色绘制进度条背景
         //   linearGradient = null;
         progressPaint.setShader(null);
-        progressPaint.setColor(Color.parseColor("#31BAA4"));
+        progressPaint.setColor(Color.parseColor("#C6EFE8"));
         canvas.drawArc(circleRectF, start + sweep1, sweep2, false, progressPaint);
 
 
         String textMoneyFlag = "￥";
         float textMoneyFlagWidth = UIHelper.getTextWidth(textMoneyFlag, textSize);
 
+        float proportion = progress / max;//在总大小中计算比例
 
-        progress = progress - small;
-        int currentIndex = (int) (progress / perScale);
-        float left = Math.abs(progress - currentIndex * perScale);
-        float right = Math.abs(progress - (currentIndex + 1) * perScale);
+        float disparity = max - small;//计算弧线所代表的长度
 
+        float count = disparity * proportion + small;//计算弧线每个点所在1000-2000中所对应的值
+
+
+        //如在范围 1000到2000中，每500一个刻度，  1000-1250 对应显示1000，  1250-1750对应显示1500，1750-2000对应显示2000
+        int currentIndex = (int) (count / perScale);
+        float left = Math.abs(count - currentIndex * perScale);
+        float right = Math.abs(count - (currentIndex + 1) * perScale);
         if (left > right) {
             float currentProgress = (currentIndex + 1) * perScale;
-            currentSelectedMoney = (int) (currentProgress + small) + "";
+            currentSelectedMoney = (int) (currentProgress) + "";
         } else {
             float currentProgress = currentIndex * perScale;
-            currentSelectedMoney = (int) (currentProgress + small) + "";
+            currentSelectedMoney = (int) (currentProgress) + "";
         }
-
-
-        Log.i("LOG", "currentSelectedMoney" + currentSelectedMoney);
-
 
         if (!isShowToMoney) {
             currentSelectedMoney = (int) max + "";
@@ -455,10 +456,8 @@ public class ProgressBarView extends View {
     public void setMoney(int small, int max) {
         this.max = max;
         this.small = small;
-
         progress = max;
         if (max == small) {
-
             isShowToMoney = false;
         } else {
             isShowToMoney = true;
