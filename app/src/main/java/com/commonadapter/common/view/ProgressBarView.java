@@ -36,7 +36,7 @@ public class ProgressBarView extends View {
     private static final int ARC_FULL_DEGREE = 180;
     //  private static final int ARC_FULL_DEGREE = 270;
 
-    private static final int subsection = 500;
+    private static final int perScale = 500;
     /**
      * 弧线的宽度
      */
@@ -111,6 +111,8 @@ public class ProgressBarView extends View {
 
     private int marginTop;
 
+
+    private String currentSelectedMoney = null;
 
     private boolean isShowToMoney = false;
 
@@ -289,23 +291,39 @@ public class ProgressBarView extends View {
 
         String textMoneyFlag = "￥";
         float textMoneyFlagWidth = UIHelper.getTextWidth(textMoneyFlag, textSize);
-        String text = (int) (progress / subsection) * subsection + "";
+
+
+        progress = progress - small;
+        int currentIndex = (int) (progress / perScale);
+        float left = Math.abs(progress - currentIndex * perScale);
+        float right = Math.abs(progress - (currentIndex + 1) * perScale);
+
+        if (left > right) {
+            float currentProgress = (currentIndex + 1) * perScale;
+            currentSelectedMoney = (int) (currentProgress + small) + "";
+        } else {
+            float currentProgress = currentIndex * perScale;
+            currentSelectedMoney = (int) (currentProgress + small) + "";
+        }
+
+
+        Log.i("LOG", "currentSelectedMoney" + currentSelectedMoney);
 
 
         if (!isShowToMoney) {
-            text = (int) max + "";
+            currentSelectedMoney = (int) max + "";
         }
 
         if (mOnMoneyClickListener != null) {
-            mOnMoneyClickListener.onMoneyListener(text);
+            mOnMoneyClickListener.onMoneyListener(currentSelectedMoney);
         }
-        float moneyTextHeight = UIHelper.getTextHeight(text, moneyTextSize);
-        float moneyTextWidtht = UIHelper.getTextWidth(text, moneyTextSize);
+        float moneyTextHeight = UIHelper.getTextHeight(currentSelectedMoney, moneyTextSize);
+        float moneyTextWidtht = UIHelper.getTextWidth(currentSelectedMoney, moneyTextSize);
 
         int margin = UIHelper.dip2px(mContext, 3);
         float flagex = centerX - (textMoneyFlagWidth + moneyTextWidtht) / 2 - margin;
         canvas.drawText(textMoneyFlag, flagex, centerY - UIHelper.dp2px(mContext, 20), moneyFlag);
-        canvas.drawText(text, centerX - moneyTextWidtht / 2 + margin, centerY - UIHelper.dp2px(mContext, 20), textPaint);
+        canvas.drawText(currentSelectedMoney, centerX - moneyTextWidtht / 2 + margin, centerY - UIHelper.dp2px(mContext, 20), textPaint);
 
 
         String cycleText = "借款周期: 7天";
@@ -435,15 +453,16 @@ public class ProgressBarView extends View {
 
 
     public void setMoney(int small, int max) {
-
         this.max = max;
         this.small = small;
+
+        progress = max;
         if (max == small) {
+
             isShowToMoney = false;
         } else {
             isShowToMoney = true;
         }
-
         invalidate();
     }
 
