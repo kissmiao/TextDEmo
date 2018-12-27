@@ -27,14 +27,14 @@ public class ProgressBarView extends View {
     /**
      * 进度条所占用的角度
      */
-        private static final int ARC_FULL_DEGREE = 180;
-  //  private static final int ARC_FULL_DEGREE = 270;
+    private static final int ARC_FULL_DEGREE = 180;
+    //  private static final int ARC_FULL_DEGREE = 270;
     /**
      * 弧线的宽度
      */
     private int STROKE_WIDTH;
     /**
-     * 组件的宽，高
+     * 中间圆形宽高 组件的宽，高
      */
     private int width, height, sWidth, sHeight;
 
@@ -75,6 +75,9 @@ public class ProgressBarView extends View {
     private int upBtCenterX, upBtCenterY, downBtCenterx, downBtCenterY;//控制按钮的坐标
     private Bitmap zhizhen;
     private Matrix matrix;//矩阵--控制指针图片的动画
+
+
+    private Matrix matrix2;
     /**
      * 指针圆心
      */
@@ -112,6 +115,7 @@ public class ProgressBarView extends View {
         position = new float[colors.length];
         zhizhen = BitmapFactory.decodeResource(getResources(), R.mipmap.zhizhen1);
         matrix = new Matrix();
+        matrix2 = new Matrix();
         Log.e("init", "测试1");
         progressPaint = new Paint();
         progressPaint.setAntiAlias(true);
@@ -125,7 +129,7 @@ public class ProgressBarView extends View {
         thumbPaint = new Paint();
         thumbPaint.setAntiAlias(true);
 
-        bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.jingbi);
+        bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.arrow);
         //使用自定义字体  
 //        textPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fangz.ttf"));  
     }
@@ -156,7 +160,7 @@ public class ProgressBarView extends View {
 
 
             centerX = sWidth / 2;
-            centerY = centerX;
+            centerY = centerX - 100;//向上移动一百
             // ratio = height/width;
 
 
@@ -192,12 +196,19 @@ public class ProgressBarView extends View {
         super.onDraw(canvas);
         Log.e("ondraw", "测试2");
 
-    //    float start = 90 + ((360 - ARC_FULL_DEGREE) >> 1); //进度条起始点
-        float start =180;
+        //    float start = 90 + ((360 - ARC_FULL_DEGREE) >> 1); //进度条起始点
+        float start = 180;
+
+
 
         float sweep1 = ARC_FULL_DEGREE * (progress / max); //进度划过的角度
         float sweep2 = ARC_FULL_DEGREE - sweep1; //剩余的角度
+        Log.i("LOG", "====sweep2===="+sweep2+"=======sweep1=========" + sweep1 );
+        //滑动度数  90
         float progressRadians = (float) (((360.0f - ARC_FULL_DEGREE) / 2 + sweep1) / 180 * Math.PI);
+        Log.i("LOG", "==========progressRadians:" + progressRadians);
+
+        //计算在圆弧上的坐标
         float thumbX = centerX - circleRadius * (float) Math.sin(progressRadians);
         float thumbY = centerY + circleRadius * (float) Math.cos(progressRadians);
 
@@ -236,7 +247,7 @@ public class ProgressBarView extends View {
 
 
         //红色绘制进度条背景
-     //   linearGradient = null;
+        //   linearGradient = null;
         progressPaint.setShader(null);
         progressPaint.setColor(Color.parseColor("#d64444"));
         canvas.drawArc(circleRectF, start + sweep1, sweep2, false, progressPaint);
@@ -264,12 +275,16 @@ public class ProgressBarView extends View {
 
         //画出指针动画
         matrix.reset();
+
         matrix.postTranslate(circleRectFCenterWidth - width / 2, circleRectFCenterHeight - height / 2);
-        matrix.preRotate(40, width / 2, height / 2);
+       matrix.preRotate(40, width / 2, height / 2);
         matrix.postRotate((float) (progressRadians * (180 / Math.PI)), circleRectFCenterWidth, circleRectFCenterHeight);
+
         System.out.println("宽=" + zhizhen.getWidth() + " 高=" + zhizhen.getHeight());
-        //   canvas.drawBitmap(zhizhen, matrix, progressPaint);
-     //   canvas.drawCircle(circleRectFCenterWidth, circleRectFCenterHeight, (float) (0.36 * width), progressPaint);
+
+        canvas.drawBitmap(zhizhen, matrix, progressPaint);
+        canvas.drawCircle(circleRectFCenterWidth, circleRectFCenterHeight, (float) (0.36 * width), progressPaint);
+
 
         //上一行文字  
         textPaint.setTextSize(circleRadius >> 1);
@@ -286,18 +301,32 @@ public class ProgressBarView extends View {
         //绘制进度条上的按钮
         thumbPaint.setColor(Color.parseColor("#33d64444"));
         canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 2.0f, thumbPaint);
-        thumbPaint.setColor(Color.parseColor("#99d64444"));
-        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 1.4f, thumbPaint);
-        thumbPaint.setColor(Color.WHITE);
-        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 0.8f, thumbPaint);
-
-        canvas.save();
-        canvas.rotate(newProgress, centerX, centerY);
-        //前面两个是指针头，后面两个是在圆心的针尾，当mHeight/2的时候刚好是在圆心，加上的是超出的后面部分
-      //  canvas.drawBitmap(bitmap, width / 10, width / 4 , progressPaint);
+//        thumbPaint.setColor(Color.parseColor("#99d64444"));
+//        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 1.4f, thumbPaint);
+//        thumbPaint.setColor(Color.WHITE);
+//        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 0.8f, thumbPaint);
 
 
-        canvas.restore();
+        matrix2.reset();
+
+        matrix2.postTranslate(width/2, circleRectFCenterHeight - height / 2);
+        matrix2.preRotate(-50);
+
+
+        int r = (int) (progressRadians * (180 / Math.PI))-125;
+        Log.i("LOG", "progressRadians:" + progressRadians + "---r:" + r);
+
+        matrix2.postRotate((float) (r), circleRectFCenterWidth, circleRectFCenterHeight);
+        canvas.drawBitmap(bitmap, matrix2, progressPaint);
+        //   canvas.drawBitmap(bitmap, width / 10, width / 4 , progressPaint);
+
+//        canvas.save();
+//        canvas.rotate(newProgress, centerX, centerY);
+//        //前面两个是指针头，后面两个是在圆心的针尾，当mHeight/2的时候刚好是在圆心，加上的是超出的后面部分
+//
+//        canvas.drawBitmap(bitmap, width / 10, width / 4 , progressPaint);
+//
+//        canvas.restore();
 
         Log.e("onDraw", "测试-完成");
 
@@ -382,7 +411,7 @@ public class ProgressBarView extends View {
         float distance = calDistance(currentX, currentY, centerX, centerY);
         float degree = calDegreeByPosition(currentX, currentY);
         return distance > circleRadius - STROKE_WIDTH * 5 && distance < circleRadius + STROKE_WIDTH * 5
-                && (degree >= -8 && degree <= ARC_FULL_DEGREE + 8);
+                && (degree >= -20 && degree <= ARC_FULL_DEGREE + 20);
     }
 
 

@@ -182,6 +182,8 @@ public class SpeedView extends View {
         //绘制圆弧
         canvas.drawArc(mArcRect, 180, 180, false, mArcPaint);
 
+
+
         canvas.drawText("1200" + "", moneyTextX, moneyTextY, mMoneyPaint);
         canvas.drawText("￥" + "", flagX, flagY, mFlagPaint);
         //  canvas.drawLine(width / 2-1,height / 2-1,width / 2+1,height / 2+1,mArcPaint);

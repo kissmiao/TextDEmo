@@ -13,11 +13,13 @@
     <com.commonadapter.common.view.ProgressBarView
         android:id="@+id/progress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="280dp"
         android:scaleType="centerCrop"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="sss" />
+
+
 </LinearLayout>
