@@ -156,13 +156,12 @@ public class ProgressBarView extends View {
             circleRadius = Math.min(width, height) * 2 / 3;
             circleRadius -= STROKE_WIDTH;
 
-            STROKE_WIDTH = circleRadius / 12;  //圆弧描边的宽度
+            STROKE_WIDTH = circleRadius / 6;  //圆弧描边的宽度
 
 
             centerX = sWidth / 2;
             centerY = centerX - 100;//向上移动一百
             // ratio = height/width;
-
 
             //圆弧所在矩形区域  
             circleRectF = new RectF();
@@ -195,15 +194,11 @@ public class ProgressBarView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         Log.e("ondraw", "测试2");
-
         //    float start = 90 + ((360 - ARC_FULL_DEGREE) >> 1); //进度条起始点
         float start = 180;
-
-
-
         float sweep1 = ARC_FULL_DEGREE * (progress / max); //进度划过的角度
         float sweep2 = ARC_FULL_DEGREE - sweep1; //剩余的角度
-        Log.i("LOG", "====sweep2===="+sweep2+"=======sweep1=========" + sweep1 );
+        Log.i("LOG", "====sweep2====" + sweep2 + "=======sweep1=========" + sweep1);
         //滑动度数  90
         float progressRadians = (float) (((360.0f - ARC_FULL_DEGREE) / 2 + sweep1) / 180 * Math.PI);
         Log.i("LOG", "==========progressRadians:" + progressRadians);
@@ -222,68 +217,25 @@ public class ProgressBarView extends View {
         System.out.println("startX=" + startX + ";startY=" + startY);
         canvas.drawCircle(startX, startY, STROKE_WIDTH / 2, progressPaint);
 
-        //绘制控制进度减按钮
-//        buttonRadius = circleRadius/8;
-//        downBtCenterx=(int) (startX+buttonRadius);
-//        downBtCenterY=(int) (startY+4*buttonRadius);
-//        progressPaint.setColor(Color.parseColor("#8800FFFF"));
-//        canvas.drawCircle(startX+buttonRadius, startY+4*buttonRadius, buttonRadius, progressPaint);
-//        progressPaint.setColor(Color.parseColor("#F0FFFF"));
-//        progressPaint.setStrokeWidth(5);
-//        canvas.drawLine(startX+buttonRadius-buttonRadius*3/4, startY+4*buttonRadius, startX+buttonRadius+buttonRadius*3/4, startY+4*buttonRadius, progressPaint);
-
-        Log.e("onDraw", "测试-画圆");
-        //黄色绘制进度条
-//        for (int i = 0; i < colors.length; i++) {
-//            position[i] = (float) (0.37 + i * (progressRadians * 100 / 360) / colors.length);
-//        }
         progressPaint.setStrokeWidth(STROKE_WIDTH);
         progressPaint.setStyle(Paint.Style.STROKE);//设置空心
-//        LinearGradient linearGradient = new LinearGradient(startX, startY, thumbX, thumbY, colors, position, TileMode.CLAMP);
-//        progressPaint.setShader(linearGradient);
-        progressPaint.setColor(Color.parseColor("#FFFF00"));
-
+        progressPaint.setColor(Color.parseColor("#C6EFE8"));
         canvas.drawArc(circleRectF, start, sweep1, false, progressPaint);
 
 
         //红色绘制进度条背景
         //   linearGradient = null;
         progressPaint.setShader(null);
-        progressPaint.setColor(Color.parseColor("#d64444"));
+        progressPaint.setColor(Color.parseColor("#31BAA4"));
         canvas.drawArc(circleRectF, start + sweep1, sweep2, false, progressPaint);
-
-        Log.e("onDraw", "测试-画进度条");
-
-        //绘制结束位置小圆形  
-        //  progressPaint.setStrokeWidth(0);
-        // progressPaint.setStyle(Paint.Style.FILL);
-        //float endX = centerX + circleRadius * (float) Math.sin(radians);
-        // float endY = centerY + circleRadius * (float) Math.cos(radians);
-        // canvas.drawCircle(endX, endY, STROKE_WIDTH / 2, progressPaint);
-        Log.e("onDraw", "测试-画按钮");
-
-        // 绘制进度加按钮
-//        upBtCenterX=(int) (endX-buttonRadius);
-//        upBtCenterY=(int) (endY+4*buttonRadius);
-//        progressPaint.setColor(Color.parseColor("#8800FFFF"));
-//        canvas.drawCircle(endX-buttonRadius, endY+4*buttonRadius, buttonRadius, progressPaint);
-//        progressPaint.setColor(Color.parseColor("#F0FFFF"));
-//        progressPaint.setStrokeWidth(5);
-//        canvas.drawLine(endX-buttonRadius-buttonRadius*3/4, endY+4*buttonRadius, endX-buttonRadius+buttonRadius*3/4, endY+4*buttonRadius, progressPaint);
-//        canvas.drawLine(endX-buttonRadius, endY+4*buttonRadius-buttonRadius*3/4, endX-buttonRadius, endY+4*buttonRadius+buttonRadius*3/4, progressPaint);
-        progressPaint.setColor(Color.WHITE);
-
+        //   progressPaint.setColor(Color.WHITE);
         //画出指针动画
-        matrix.reset();
-
-        matrix.postTranslate(circleRectFCenterWidth - width / 2, circleRectFCenterHeight - height / 2);
-       matrix.preRotate(40, width / 2, height / 2);
-        matrix.postRotate((float) (progressRadians * (180 / Math.PI)), circleRectFCenterWidth, circleRectFCenterHeight);
-
-        System.out.println("宽=" + zhizhen.getWidth() + " 高=" + zhizhen.getHeight());
-
-        canvas.drawBitmap(zhizhen, matrix, progressPaint);
-        canvas.drawCircle(circleRectFCenterWidth, circleRectFCenterHeight, (float) (0.36 * width), progressPaint);
+        //   matrix.reset();
+        //  matrix.postTranslate(circleRectFCenterWidth - width / 2, circleRectFCenterHeight - height / 2);
+        //  matrix.preRotate(40, width / 2, height / 2);
+        // matrix.postRotate((float) (progressRadians * (180 / Math.PI)), circleRectFCenterWidth, circleRectFCenterHeight);
+        // canvas.drawBitmap(zhizhen, matrix, progressPaint);
+        //  canvas.drawCircle(circleRectFCenterWidth, circleRectFCenterHeight, (float) (0.36 * width), progressPaint);
 
 
         //上一行文字  
@@ -298,39 +250,13 @@ public class ProgressBarView extends View {
         canvas.drawText(text, centerX - textLen / 2 + extra, centerY - 30 + h1 / 2, textPaint);
 
 
-        //绘制进度条上的按钮
-        thumbPaint.setColor(Color.parseColor("#33d64444"));
-        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 2.0f, thumbPaint);
-//        thumbPaint.setColor(Color.parseColor("#99d64444"));
-//        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 1.4f, thumbPaint);
-//        thumbPaint.setColor(Color.WHITE);
-//        canvas.drawCircle(thumbX, thumbY, STROKE_WIDTH * 0.8f, thumbPaint);
-
-
         matrix2.reset();
-
-        matrix2.postTranslate(width/2, circleRectFCenterHeight - height / 2);
+        matrix2.postTranslate(width / 2, circleRectFCenterHeight - height / 2);
         matrix2.preRotate(-50);
-
-
-        int r = (int) (progressRadians * (180 / Math.PI))-125;
-        Log.i("LOG", "progressRadians:" + progressRadians + "---r:" + r);
-
+        int r = (int) (progressRadians * (180 / Math.PI)) - 126;
         matrix2.postRotate((float) (r), circleRectFCenterWidth, circleRectFCenterHeight);
         canvas.drawBitmap(bitmap, matrix2, progressPaint);
-        //   canvas.drawBitmap(bitmap, width / 10, width / 4 , progressPaint);
 
-//        canvas.save();
-//        canvas.rotate(newProgress, centerX, centerY);
-//        //前面两个是指针头，后面两个是在圆心的针尾，当mHeight/2的时候刚好是在圆心，加上的是超出的后面部分
-//
-//        canvas.drawBitmap(bitmap, width / 10, width / 4 , progressPaint);
-//
-//        canvas.restore();
-
-        Log.e("onDraw", "测试-完成");
-
-        System.out.println("进度值progress=" + progress);
     }
 
 
@@ -410,8 +336,8 @@ public class ProgressBarView extends View {
     private boolean checkOnArc(float currentX, float currentY) {
         float distance = calDistance(currentX, currentY, centerX, centerY);
         float degree = calDegreeByPosition(currentX, currentY);
-        return distance > circleRadius - STROKE_WIDTH * 5 && distance < circleRadius + STROKE_WIDTH * 5
-                && (degree >= -20 && degree <= ARC_FULL_DEGREE + 20);
+        return distance > circleRadius - STROKE_WIDTH * 8 && distance < circleRadius + STROKE_WIDTH * 8
+                && (degree >= -18 && degree <= ARC_FULL_DEGREE + 18);
     }
 
 
