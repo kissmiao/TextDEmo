@@ -2,8 +2,7 @@ package com.commonadapter.module.tow;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.commonadapter.R;
 import com.commonadapter.common.view.ProgressBarView;
@@ -17,7 +16,16 @@ public class SpeedActivity extends Activity {
         setContentView(R.layout.activity_s);
         ProgressBarView view = (ProgressBarView) findViewById(R.id.progress);
         view.setDraggingEnabled(true);
-        view.setMax(1000);
+
+        view.setMoney(500, 1500);
+
+        view.setMoneyClickListener(new ProgressBarView.onMoneyClickListener() {
+            @Override
+            public void onMoneyListener(String money) {
+                Toast.makeText(SpeedActivity.this, "money" + money, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
 }

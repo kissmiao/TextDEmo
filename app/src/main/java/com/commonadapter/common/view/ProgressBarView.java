@@ -15,6 +15,7 @@ import android.graphics.RectF;
 import android.graphics.Shader.TileMode;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,12 +24,19 @@ import android.view.View;
 import com.commonadapter.R;
 import com.commonadapter.common.util.UIHelper;
 
+import okhttp3.HttpUrl;
+
 public class ProgressBarView extends View {
+
+
+    private Context mContext;
     /**
      * 进度条所占用的角度
      */
     private static final int ARC_FULL_DEGREE = 180;
     //  private static final int ARC_FULL_DEGREE = 270;
+
+    private static final int subsection = 500;
     /**
      * 弧线的宽度
      */
@@ -39,9 +47,9 @@ public class ProgressBarView extends View {
     private int width, height, sWidth, sHeight;
 
     /**
-     * 进度条最大值和当前进度值
+     * 进度条最大值,最小值和当前进度值
      */
-    private float max, progress;
+    private float max, small, progress;
 
 
     /**
@@ -93,25 +101,63 @@ public class ProgressBarView extends View {
 
     private Bitmap bitmap;
 
+    private Paint textRangePaint;
+
+    private Paint moneyFlag;
+
+
+    private int textSize;
+    private int moneyTextSize;
+
+    private int marginTop;
+
+
+    private boolean isShowToMoney = false;
+
+
+    public interface onMoneyClickListener {
+        void onMoneyListener(String money);
+
+    }
+
+    public onMoneyClickListener mOnMoneyClickListener;
+
+    public void setDraggingEnabled(boolean draggingEnabled) {
+        this.draggingEnabled = draggingEnabled;
+    }
+
+    public void setMoneyClickListener(onMoneyClickListener onMoneyClickListener) {
+        mOnMoneyClickListener = onMoneyClickListener;
+    }
+
+
     public ProgressBarView(Context context) {
         super(context);
+        mContext = context;
         init();
     }
 
 
     public ProgressBarView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
         init();
     }
 
 
     public ProgressBarView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
         init();
     }
 
 
     private void init() {
+        textSize = UIHelper.sp2px(mContext, 12);
+        moneyTextSize = UIHelper.sp2px(mContext, 30);
+
+        marginTop = UIHelper.Dp2Px(mContext, 5);
+
         position = new float[colors.length];
         zhizhen = BitmapFactory.decodeResource(getResources(), R.mipmap.zhizhen1);
         matrix = new Matrix();
@@ -124,6 +170,7 @@ public class ProgressBarView extends View {
         textPaint = new Paint();
         textPaint.setColor(Color.BLACK);
         textPaint.setAntiAlias(true);
+        textPaint.setTextSize(moneyTextSize);
 
 
         thumbPaint = new Paint();
@@ -131,7 +178,19 @@ public class ProgressBarView extends View {
 
         bitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.arrow);
         //使用自定义字体  
-//        textPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fangz.ttf"));  
+//        textPaint.setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fangz.ttf"));
+
+        textRangePaint = new Paint();
+        textRangePaint.setColor(Color.parseColor("#C0C9D6"));
+        textRangePaint.setAntiAlias(true);
+        textRangePaint.setTextSize(UIHelper.sp2px(mContext, 12));
+
+        moneyFlag = new Paint();
+        moneyFlag.setColor(Color.BLACK);
+        moneyFlag.setAntiAlias(true);
+        moneyFlag.setTextSize(textSize);
+
+
     }
 
     public float getProgress() {
@@ -180,8 +239,6 @@ public class ProgressBarView extends View {
             circleRectFCenterWidth = (circleRectF.right + circleRectF.left) / 2;
             circleRectFCenterHeight = (circleRectF.bottom + circleRectF.top) / 2;
 
-            System.out.println("具体值：" + zhizhenRectF.left + " " + zhizhenRectF.right + " " + zhizhenRectF.top + " " + zhizhenRectF.bottom);
-            Log.e("onMeasure", "获取长宽完成");
         }
     }
 
@@ -228,34 +285,53 @@ public class ProgressBarView extends View {
         progressPaint.setShader(null);
         progressPaint.setColor(Color.parseColor("#31BAA4"));
         canvas.drawArc(circleRectF, start + sweep1, sweep2, false, progressPaint);
-        //   progressPaint.setColor(Color.WHITE);
-        //画出指针动画
-        //   matrix.reset();
-        //  matrix.postTranslate(circleRectFCenterWidth - width / 2, circleRectFCenterHeight - height / 2);
-        //  matrix.preRotate(40, width / 2, height / 2);
-        // matrix.postRotate((float) (progressRadians * (180 / Math.PI)), circleRectFCenterWidth, circleRectFCenterHeight);
-        // canvas.drawBitmap(zhizhen, matrix, progressPaint);
-        //  canvas.drawCircle(circleRectFCenterWidth, circleRectFCenterHeight, (float) (0.36 * width), progressPaint);
 
 
-        //上一行文字  
-        textPaint.setTextSize(circleRadius >> 1);
-        String text = (int) (100 * progress / max) + "";
-        float textLen = textPaint.measureText(text);
-        //计算文字高度  
-        textPaint.getTextBounds("8", 0, 1, textBounds);
-        float h1 = textBounds.height();
-        //% 前面的数字水平居中，适当调整  
-        float extra = text.startsWith("1") ? -textPaint.measureText("1") / 2 : 0;
-        canvas.drawText(text, centerX - textLen / 2 + extra, centerY - 30 + h1 / 2, textPaint);
+        String textMoneyFlag = "￥";
+        float textMoneyFlagWidth = UIHelper.getTextWidth(textMoneyFlag, textSize);
+        String text = (int) (progress / subsection) * subsection + "";
 
 
-        matrix2.reset();
-        matrix2.postTranslate(width / 2, circleRectFCenterHeight - height / 2);
-        matrix2.preRotate(-50);
-        int r = (int) (progressRadians * (180 / Math.PI)) - 126;
-        matrix2.postRotate((float) (r), circleRectFCenterWidth, circleRectFCenterHeight);
-        canvas.drawBitmap(bitmap, matrix2, progressPaint);
+        if (!isShowToMoney) {
+            text = (int) max + "";
+        }
+
+        if (mOnMoneyClickListener != null) {
+            mOnMoneyClickListener.onMoneyListener(text);
+        }
+        float moneyTextHeight = UIHelper.getTextHeight(text, moneyTextSize);
+        float moneyTextWidtht = UIHelper.getTextWidth(text, moneyTextSize);
+
+        int margin = UIHelper.dip2px(mContext, 3);
+        float flagex = centerX - (textMoneyFlagWidth + moneyTextWidtht) / 2 - margin;
+        canvas.drawText(textMoneyFlag, flagex, centerY - UIHelper.dp2px(mContext, 20), moneyFlag);
+        canvas.drawText(text, centerX - moneyTextWidtht / 2 + margin, centerY - UIHelper.dp2px(mContext, 20), textPaint);
+
+
+        String cycleText = "借款周期: 7天";
+        float cycleTextWidtht = UIHelper.getTextWidth(cycleText, textSize);
+        canvas.drawText("借款周期: 7天", centerX - cycleTextWidtht / 2, centerY + 10, textRangePaint);
+
+
+        if (isShowToMoney) {
+
+            matrix2.reset();
+            matrix2.postTranslate(width / 2, circleRectFCenterHeight - height / 2);
+            matrix2.preRotate(-50);
+            int r = (int) (progressRadians * (180 / Math.PI)) - 126;
+            matrix2.postRotate((float) (r), circleRectFCenterWidth, circleRectFCenterHeight);
+            canvas.drawBitmap(bitmap, matrix2, progressPaint);
+
+
+            float textHeight = UIHelper.getTextHeight("0", textSize);
+            float smallTextWidth = UIHelper.getTextWidth((int) small + "", UIHelper.sp2px(mContext, 12));
+            float maxTextWidth = UIHelper.getTextWidth((int) max + "", UIHelper.sp2px(mContext, 12));
+
+            canvas.drawText((int) small + "", centerX - circleRadius - smallTextWidth / 2, centerY - textHeight + marginTop, textRangePaint);
+            canvas.drawText((int) max + "", centerX + circleRadius - maxTextWidth / 2, centerY - textHeight + marginTop, textRangePaint);
+
+        }
+
 
     }
 
@@ -264,7 +340,9 @@ public class ProgressBarView extends View {
 
 
     public boolean onTouchEvent(@NonNull MotionEvent event) {
-        if (!draggingEnabled) {
+
+        //只有一个money不让点击
+        if (!draggingEnabled || !isShowToMoney) {
             return super.onTouchEvent(event);
         }
         Log.e("onTouchEvent", "测试3");
@@ -352,13 +430,20 @@ public class ProgressBarView extends View {
             a1 += 360;
         }
 
-
         return a1 - (360 - ARC_FULL_DEGREE) / 2;
     }
 
 
-    public void setMax(int max) {
+    public void setMoney(int small, int max) {
+
         this.max = max;
+        this.small = small;
+        if (max == small) {
+            isShowToMoney = false;
+        } else {
+            isShowToMoney = true;
+        }
+
         invalidate();
     }
 
@@ -390,13 +475,8 @@ public class ProgressBarView extends View {
         if (progress < 0) {
             return 0;
         }
-
-
         return progress > max ? max : progress;
     }
 
 
-    public void setDraggingEnabled(boolean draggingEnabled) {
-        this.draggingEnabled = draggingEnabled;
-    }
-}  
+}
