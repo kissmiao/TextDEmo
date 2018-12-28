@@ -44,8 +44,9 @@ public class ProgressBarView extends View {
     /**
      * 中间圆形宽高 组件的宽，高
      */
-    private int width, height, sWidth, sHeight;
+    private int sWidth, sHeight;
 
+    // private int width, height,
     /**
      * 进度条最大值,最小值和当前进度值
      */
@@ -89,8 +90,8 @@ public class ProgressBarView extends View {
     /**
      * 指针圆心
      */
-    private float circleRectFCenterWidth;
-    private float circleRectFCenterHeight;
+//    private float circleRectFCenterWidth;
+//    private float circleRectFCenterHeight;
     /**
      * 圆弧上渐变色的颜色值
      */
@@ -203,21 +204,30 @@ public class ProgressBarView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        Log.e("onMeasure", "获取长宽");
-        if (width == 0 || height == 0) {
+        if (sWidth == 0 || sHeight == 0) {
             sWidth = MeasureSpec.getSize(widthMeasureSpec);
+
+            Log.i("LOG", "sWidth=======" + sWidth);
             sHeight = MeasureSpec.getSize(heightMeasureSpec);
-            width = zhizhen.getWidth();
-            height = zhizhen.getHeight();
+            //  width = zhizhen.getWidth();
+            //  height = zhizhen.getHeight();
 
 
-            System.out.println("width=" + width + " ; height=" + height);
+            //   System.out.println("width=" + width + " ; height=" + height);
 
             //计算圆弧半径和圆心点  
-            circleRadius = Math.min(width, height) * 2 / 3;
-            circleRadius -= STROKE_WIDTH;
+            //  circleRadius = Math.min(width, height)*2/3 ;
 
-            STROKE_WIDTH = circleRadius / 6;  //圆弧描边的宽度
+            //圆弧半径为屏幕宽度的1/4
+            circleRadius = sWidth / 4;
+
+            Log.i("LOG", "circleRadius=======" + circleRadius);
+            //圆弧的宽度为13dp
+            STROKE_WIDTH = UIHelper.dip2px(mContext, 13);  //圆弧描边的宽度
+
+
+            Log.i("LOG", "STROKE_WIDTH=======" + STROKE_WIDTH);
+            //  circleRadius -= STROKE_WIDTH;
 
 
             centerX = sWidth / 2;
@@ -231,6 +241,8 @@ public class ProgressBarView extends View {
             circleRectF.right = centerX + circleRadius;
             circleRectF.bottom = centerY + circleRadius;
 
+
+            Log.i("LOG", " circleRectF.left=======" + circleRectF.left);
             //指针所在区域
             zhizhenRectF = new RectF();
             zhizhenRectF.left = centerX - circleRadius / 1.6f;
@@ -238,8 +250,8 @@ public class ProgressBarView extends View {
             zhizhenRectF.right = centerX + circleRadius / 1.6f;
             zhizhenRectF.bottom = centerY + circleRadius / 1.6f;
 
-            circleRectFCenterWidth = (circleRectF.right + circleRectF.left) / 2;
-            circleRectFCenterHeight = (circleRectF.bottom + circleRectF.top) / 2;
+            //   circleRectFCenterWidth = (circleRectF.right + circleRectF.left) / 2;
+            //  circleRectFCenterHeight = (circleRectF.bottom + circleRectF.top) / 2;
 
         }
     }
@@ -252,15 +264,12 @@ public class ProgressBarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.e("ondraw", "测试2");
         //    float start = 90 + ((360 - ARC_FULL_DEGREE) >> 1); //进度条起始点
         float start = 180;
         float sweep1 = ARC_FULL_DEGREE * (progress / max); //进度划过的角度
         float sweep2 = ARC_FULL_DEGREE - sweep1; //剩余的角度
-        Log.i("LOG", "====sweep2====" + sweep2 + "=======sweep1=========" + sweep1);
         //滑动度数  90
         float progressRadians = (float) (((360.0f - ARC_FULL_DEGREE) / 2 + sweep1) / 180 * Math.PI);
-        Log.i("LOG", "==========progressRadians:" + progressRadians);
 
         //计算在圆弧上的坐标
         float thumbX = centerX - circleRadius * (float) Math.sin(progressRadians);
@@ -335,10 +344,11 @@ public class ProgressBarView extends View {
         if (isShowToMoney) {
 
             matrix2.reset();
-            matrix2.postTranslate(width / 2, circleRectFCenterHeight - height / 2);
-            matrix2.preRotate(-50);
-            int r = (int) (progressRadians * (180 / Math.PI)) - 126;
-            matrix2.postRotate((float) (r), circleRectFCenterWidth, circleRectFCenterHeight);
+            matrix2.postTranslate(centerX - circleRadius - bitmap.getWidth()-UIHelper.dp2px(mContext,2), centerY +bitmap.getHeight()/2);
+
+            matrix2.preRotate(-89);
+            int r = (int) (progressRadians * (180 / Math.PI)) + 269;
+            matrix2.postRotate((float) (r), centerX, centerY);
             canvas.drawBitmap(bitmap, matrix2, progressPaint);
 
 
