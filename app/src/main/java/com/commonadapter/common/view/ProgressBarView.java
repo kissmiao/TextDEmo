@@ -439,14 +439,16 @@ public class ProgressBarView extends View {
 
     /**
      * 判断该点是否在弧线上（附近）
+     * 两点间的距离在大于弧线半径-5小于弧线半径+图片高度+5
+     * (degree >= -8 && degree <= ARC_FULL_DEGREE + 8) 旋转的角度在-8度到188度
      */
     private boolean checkOnArc(float currentX, float currentY) {
+
         float distance = calDistance(currentX, currentY, centerX, centerY);
         float degree = calDegreeByPosition(currentX, currentY);
-        return distance > circleRadius - STROKE_WIDTH * 8 && distance < circleRadius + STROKE_WIDTH * 8
-                && (degree >= -18 && degree <= ARC_FULL_DEGREE + 18);
+        return distance >circleRadius-bitmap.getHeight() && distance < circleRadius+bitmap.getHeight()
+                && (degree >= -8 && degree <= ARC_FULL_DEGREE + 8);
     }
-
 
     /**
      * 根据当前位置，计算出进度条已经转过的角度。
