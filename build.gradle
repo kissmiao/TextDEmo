@@ -23,3 +23,17 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+ext {
+    // Sdk and tools
+    minSdkVersion = 15
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    supportLibraryVersion = '27.0.0'
+
+    // App dependencies
+    aRouter = '1.2.2'
+    leakcanaryVersion = '1.3'
+    glideVersion = '3.7.0'
+}

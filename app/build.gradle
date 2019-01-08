@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 26
     defaultConfig {
         applicationId "com.commonadapter"
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         manifestPlaceholders = [
-                //极光
                 APPID                : "123"
         ]
     }

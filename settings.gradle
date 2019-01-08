@@ -1,1 +1,1 @@
-include ':app', ':okhttputils'
+include ':app', ':okhttputils', ':moduleA', ':ModuleA', ':ModuleB', ':ModuleC', ':ModuleBase'
