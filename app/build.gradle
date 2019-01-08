@@ -35,5 +35,5 @@ dependencies {
 
     //权限
     implementation 'com.yanzhenjie:permission:1.1.0'
-    compile 'com.android.support:cardview-v7:23.0.0'
+    implementation 'com.android.support:cardview-v7:23.0.0'
 }
