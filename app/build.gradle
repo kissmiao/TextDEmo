@@ -23,12 +23,21 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    if (isModuleRun.toBoolean()) {
-        implementation project(':ModuleBase')
-    } else {
-        implementation project(':moduleA')
-        implementation project(':ModuleB')
-        implementation project(':ModuleC')
-    }
+    //
+//    if (isModuleRun.toBoolean()) {
+//        implementation project(':ModuleBase')
+//    } else {
+//        implementation project(':ModuleA')
+//        implementation project(':ModuleB')
+//        implementation project(':ModuleC')
+//    }
 
+    implementation project(':ModuleA')
+    implementation project(':ModuleB')
+    implementation project(':ModuleC')
+
+    //        implementation project(':ModuleA')
+    //        implementation project(':ModuleB')
+    //        implementation project(':ModuleC')
+    implementation project(':okhttputils')
 }
