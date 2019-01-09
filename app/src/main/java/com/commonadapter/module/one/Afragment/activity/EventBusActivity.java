@@ -8,7 +8,8 @@ import com.commonadapter.R;
 import com.commonadapter.common.bean.BaseBean;
 import com.commonadapter.common.bean.Bean;
 
-import de.greenrobot.event.EventBus;
+import org.greenrobot.eventbus.EventBus;
+
 
 /**
  * Created by whl on 2016/12/22.

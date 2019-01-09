@@ -33,7 +33,8 @@ import com.commonadapter.module.one.Afragment.activity.TransverseScrollView;
 import com.commonadapter.module.one.Afragment.activity.TwoActivity;
 import com.commonadapter.module.one.Afragment.activity.ViewPagerActivity;
 
-import de.greenrobot.event.EventBus;
+import org.greenrobot.eventbus.EventBus;
+
 
 /**
  * Created by Administrator on 2016/6/28.
