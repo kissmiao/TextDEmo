@@ -54,14 +54,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void init() {
         initView();
+        initData();
+
+    }
+
+
+    private void initData() {
         fragmentManager = getSupportFragmentManager();
         setTabSelection(0);
         mIvTab1.setSelected(true);
         mTvTab1.setSelected(true);
-
-
     }
-
 
     /**
      * 根据传入的index参数来设置选中的tab页。

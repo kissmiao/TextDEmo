@@ -42,4 +42,8 @@
     <color name="yellow">#ff9402</color>
 
 
+
+    <color name="title_color">#f44236</color>
+    <color name="transparent_color">#00000000</color>
+
 </resources>

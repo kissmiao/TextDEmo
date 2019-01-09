@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/title_color"
+        android:gravity="center" >
+
+        <RadioGroup
+            android:id="@+id/rg_host"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/tab_rectangle_stoke_drawable"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/bt_product"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_left_drawable_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="产品"
+                android:textColor="@drawable/radiobtn_textcolor_drawable_selector" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+
+            <RadioButton
+                android:id="@+id/bt_ranking"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_right_drawable_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="排行"
+                android:textColor="@drawable/radiobtn_textcolor_drawable_selector" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_event"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
 </LinearLayout>
