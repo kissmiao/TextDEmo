@@ -1,8 +1,8 @@
 package com.demo;
 
-import android.app.Application;
 import android.content.Context;
 
+import com.base.BaseApplication;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 
 
-public class MyApplicaction extends Application {
+public class MyApplicaction extends BaseApplication {
     private static Context mContext;
 
     @Override

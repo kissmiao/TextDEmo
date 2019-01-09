@@ -11,12 +11,12 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(getContentView());
+        setContentView(getLayoutId());
         init();
     }
 
 
-    protected abstract View getContentView();
+    protected abstract int getLayoutId();
 
 
     protected abstract void init();

@@ -32,9 +32,9 @@
 
             <ImageView
                 android:id="@+id/iv_tab1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/tab1_bg_selector"
+                android:layout_width="27dip"
+                android:layout_height="27dip"
+                android:background="@drawable/tab_current_btn"
                 android:clickable="false"
                 android:scaleType="fitXY" />
 
@@ -59,9 +59,9 @@
 
             <ImageView
                 android:id="@+id/iv_tab2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/tab2_bg_selector"
+                android:layout_width="27dip"
+                android:layout_height="27dip"
+                android:background="@drawable/tab_terminal_btn"
                 android:clickable="false"
                 android:scaleType="fitXY" />
 
@@ -75,6 +75,7 @@
                 android:textColor="@color/tab_text_color"
                 android:textSize="12sp" />
         </LinearLayout>
+
 
 
         <LinearLayout
@@ -97,9 +98,9 @@
 
                     <ImageView
                         android:id="@+id/iv_tab3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/tab3_bg_selector"
+                        android:layout_width="27dip"
+                        android:layout_height="27dip"
+                        android:background="@drawable/tab_mine_btn"
                         android:clickable="false" />
 
                     <TextView
