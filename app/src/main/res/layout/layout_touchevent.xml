@@ -5,7 +5,7 @@
     android:gravity="center"
     android:orientation="vertical" >
 
-    <com.commonadapter.common.touchevent.TouchEventFather
+    <com.common.touchevent.TouchEventFather
         android:layout_width="fill_parent"
         android:layout_height="400dp"
         android:gravity="center"
@@ -13,7 +13,7 @@
 
 
 
-    <com.commonadapter.common.touchevent.TouchEventChilds
+    <com.common.touchevent.TouchEventChilds
         android:id="@+id/childs"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -25,5 +25,5 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:text="和红色区域一样的子View"/>
-    </com.commonadapter.common.touchevent.TouchEventFather>
+    </com.common.touchevent.TouchEventFather>
 </LinearLayout>

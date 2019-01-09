@@ -45,12 +45,12 @@
 
     </RelativeLayout>
 
- <com.commonadapter.common.view.TimeViewGroup
+ <com.demo.common.view.TimeViewGroup
      android:id="@+id/ll_time_view_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        ></com.commonadapter.common.view.TimeViewGroup>
+        ></com.demo.common.view.TimeViewGroup>
 
 
 </LinearLayout>

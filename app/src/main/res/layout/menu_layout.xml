@@ -15,7 +15,7 @@
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
-    <com.commonadapter.common.view.WheelMenu
+    <com.demo.common.view.WheelMenu
         android:id="@+id/wheelMenu"
         android:background="@color/red"
         android:layout_width="300dp"

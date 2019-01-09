@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.commonadapter.common.view.SpeedView
+    <com.demo.common.view.SpeedView
         android:layout_width="wrap_content"
         android:visibility="gone"
         android:layout_height="200dp" />
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="sss" />
 
-    <com.commonadapter.common.view.ProgressBarView
+    <com.demo.common.view.ProgressBarView
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="280dp"

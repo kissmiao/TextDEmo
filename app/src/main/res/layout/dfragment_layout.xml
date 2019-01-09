@@ -5,7 +5,7 @@
               android:orientation="vertical">
 
 
-    <com.commonadapter.common.view.ScrollView
+    <com.demo.common.view.ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,16 +17,16 @@
             android:orientation="horizontal">
 
         </LinearLayout>
-    </com.commonadapter.common.view.ScrollView>
+    </com.demo.common.view.ScrollView>
 
 
-    <com.commonadapter.common.view.RunningLightView
+    <com.demo.common.view.RunningLightView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/palegreen"
         android:ellipsize="none"
         android:singleLine="true"
-        android:text="11111111112222222222223333333333344444444455555555555566666666677777777777777777777788888888888888899999999999999999"></com.commonadapter.common.view.RunningLightView>
+        android:text="11111111112222222222223333333333344444444455555555555566666666677777777777777777777788888888888888899999999999999999"></com.demo.common.view.RunningLightView>
 
 
 </LinearLayout>

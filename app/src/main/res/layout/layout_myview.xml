@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
 
-    <com.commonadapter.common.view.Mview
+    <com.demo.common.view.Mview
         android:id="@+id/myview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></com.commonadapter.common.view.Mview>
+        android:layout_height="wrap_content"></com.demo.common.view.Mview>
 
 
 </LinearLayout>

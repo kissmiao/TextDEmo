@@ -12,9 +12,9 @@
     android:src="@mipmap/click_a_like_on"/>
 
 <!--
-    <com.commonadapter.common.view.FllowerAnimation2
+    <com.demo.common.view.FllowerAnimation2
         android:id="@+id/view_xin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ></com.commonadapter.common.view.FllowerAnimation2>-->
+        ></com.demo.common.view.FllowerAnimation2>-->
 </RelativeLayout>

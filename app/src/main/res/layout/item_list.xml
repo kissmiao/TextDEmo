@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.commonadapter.common.view.DeleteItemView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.demo.common.view.DeleteItemView xmlns:android="http://schemas.android.com/apk/res/android"
                                               android:id="@+id/rl_delete_view"
                                               android:layout_width="match_parent"
                                               android:layout_height="wrap_content"
@@ -60,4 +60,4 @@
         android:textSize="12sp" >
     </TextView>
 
-</com.commonadapter.common.view.DeleteItemView>
+</com.demo.common.view.DeleteItemView>

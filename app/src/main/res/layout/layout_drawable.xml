@@ -55,7 +55,7 @@
         android:text="默认按钮" />
 
 
-    <com.commonadapter.common.view.MyRadioGroup
+    <com.demo.common.view.MyRadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -155,7 +155,7 @@
             android:text="女是"
             android:textSize="10dip" />
 
-    </com.commonadapter.common.view.MyRadioGroup>
+    </com.demo.common.view.MyRadioGroup>
 
     <TextView
         android:id="@+id/tvSex"

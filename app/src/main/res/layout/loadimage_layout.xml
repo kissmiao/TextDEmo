@@ -10,19 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <!--    <com.commonadapter.common.view.DragView
+        <!--    <com.demo.common.view.DragView
            android:id="@+id/iv_loadeimage"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            />-->
-        <!-- <com.commonadapter.common.view.PathPainter
+        <!-- <com.demo.common.view.PathPainter
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             ></com.commonadapter.common.view.PathPainter>-->
-<!--        <com.commonadapter.common.view.PathTan
+             ></com.demo.common.view.PathPainter>-->
+<!--        <com.demo.common.view.PathTan
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            ></com.commonadapter.common.view.PathTan>-->
+            ></com.demo.common.view.PathTan>-->
         <TextView
             android:id="@+id/tv_loadimage_text"
             android:layout_width="wrap_content"
@@ -39,11 +39,11 @@
             android:background="@mipmap/click_a_like_on" />
     </LinearLayout>
 
-<!--    <com.commonadapter.common.view.FllowerAnimation
+<!--    <com.demo.common.view.FllowerAnimation
         android:id="@+id/view_xin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-      ></com.commonadapter.common.view.FllowerAnimation>-->
+      ></com.demo.common.view.FllowerAnimation>-->
 
 
 </RelativeLayout>

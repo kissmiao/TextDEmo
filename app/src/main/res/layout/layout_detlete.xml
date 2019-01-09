@@ -6,13 +6,13 @@
     android:orientation="vertical"
    >
 
-    <com.commonadapter.common.view.SlideCutListView
+    <com.demo.common.view.SlideCutListView
         android:id="@+id/slideCutListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:listSelector="@android:color/transparent"
         android:divider="@mipmap/reader_item_divider"
         android:cacheColorHint="@android:color/transparent">
-    </com.commonadapter.common.view.SlideCutListView>
+    </com.demo.common.view.SlideCutListView>
 
 </RelativeLayout>
