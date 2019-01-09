@@ -55,7 +55,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void init() {
         initView();
         initData();
-
     }
 
 
