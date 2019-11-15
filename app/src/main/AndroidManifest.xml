@@ -14,57 +14,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".module.HomeActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.one.Afragment.activity.TwoActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.OneActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.DrawCircleActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.ViewPagerActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.TransverseScrollView"></activity>
 
-        <activity android:name=".module.one.Afragment.activity.ClockActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.MenuActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.MoveView"></activity>
-        <activity android:name=".module.one.Afragment.activity.DeleteView"></activity>
-        <activity android:name=".module.one.Afragment.activity.RemoveSideslipActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.ScrollActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.ColumnActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.BrokenLineActivity"></activity>
-        <activity android:name=".common.touchevent.TouchEventActivity"></activity>
-
-        <activity android:name=".module.one.Bfragment.Efragment.activity.MyView"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.SolidViewActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.QQHealthActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.ItemViewGroupActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.CurveActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.DrawableActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.ImageViewGroupActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.CircularActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.Circular2Activity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.ListViewActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.RecycleViewActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.RecycleViewPage"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.PopwActivity"></activity>
-
-        <activity android:name=".module.one.Bfragment.Efragment.activity.HandlerActivity"></activity>
-        <activity android:name=".common.pickerview.DataActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.LayoutInflateActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.RecycleViewListActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.EventBusActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.DialogActivity"></activity>
-        <activity android:name=".module.one.Bfragment.Efragment.activity.OkHttpActivity"></activity>
-        <activity android:name=".module.one.Afragment.activity.TimeViewGroupActivity"></activity>
-
-        <activity android:name=".module.three.MessageActivity"></activity>
-        <activity android:name=".module.tow.SlideActivity"></activity>
-
-
-        <activity android:name=".module.tow.SpeedActivity"></activity>
         <meta-data
             android:name="APPID"
             android:value="${APPID}" />
